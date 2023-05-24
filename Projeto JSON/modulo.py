@@ -1,3 +1,4 @@
+import json
 # Criando arquivos com Python + Context Manager with
 # Usamos a função open para abrir
 # um arquivo em Python (ele pode ou não existir)
@@ -23,5 +24,37 @@ caminho_arquivo += 'aula116.txt'
 # arquivo = open(caminho_arquivo, 'w')
 # arquivo.write('Oi')
 # arquivo.close()
-with open(caminho_arquivo, 'w') as arquivo:
-    arquivo.write('Ola Mundo')
+# with open(caminho_arquivo, 'w+') as arquivo:
+#     arquivo.write('Ola Mundo\n')
+#     arquivo.writelines(
+#         ('Oi\n', 'Teste de Linha\n', 'Terceira linha\n')
+#     )
+#     arquivo.write('Atenção\n')
+#     arquivo.seek(0,0)
+#     print(arquivo.readline())
+
+# with open ("C:\\Users\\T-GAMER\\Documents\\Workspace\\Hello World Python\\Projeto JSON\\states.json") as f:
+#     data = json.load(f)
+
+# new_string = json.dumps(data, indent=2) #Jeito De ver o arquivo json mais organizado
+# print(new_string)
+
+
+# for state in data['states']:  # Caminhar no arquivo json, igual um dicionario
+#     del state['area_codes']
+#     print(state['area_codes'])
+    
+
+from urllib.request import urlopen
+
+with urlopen('https://openexchangerates.org/api/currencies.json') as response:
+    source = response.read()
+
+data = json.loads(source)
+print(json.dumps(data, indent=2))
+
+# for s, p in data.items():
+#     print(f"Moeda : {s}\nPaís : {p}")
+#     print()
+
+
